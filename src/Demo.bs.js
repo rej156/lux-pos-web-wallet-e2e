@@ -13,16 +13,18 @@ function $$default() {
                                     waitUntil: "load"
                                   };
                                   return page.goto("https://lux.poswallet.io", options).then((function () {
-                                                          var partial_arg = ( function (element) { return element.setAttribute("novalidate", true); } );
-                                                          return page.$eval("#kc-form-login", Curry.__1(partial_arg));
+                                                            var partial_arg = ( function (element) { return element.setAttribute("novalidate", true); } );
+                                                            return page.$eval("#kc-form-login", Curry.__1(partial_arg));
+                                                          })).then((function () {
+                                                          return page.type("#username", process.env.EMAIL, undefined);
                                                         })).then((function () {
-                                                        return page.type("#username", process.env.EMAIL, undefined);
+                                                        return page.type("#password", process.env.PASSWORD, undefined);
                                                       })).then((function () {
-                                                      return page.type("#password", process.env.PASSWORD, undefined);
+                                                      return page.click("#kc-login", undefined);
                                                     })).then((function () {
-                                                    return page.click("#kc-login", undefined);
+                                                    return page.waitForSelector("body > div.page-wrapper > div > div > div:nth-child(2) > div > div > div.ibox-body > div.d-flex.justify-content-between.m-b-20 > div > h3", undefined);
                                                   })).then((function () {
-                                                  return page.waitForSelector("body > div.page-wrapper > div > div > div:nth-child(2) > div > div > div.ibox-body > div.d-flex.justify-content-between.m-b-20 > div > h3", undefined);
+                                                  return page.goto("https://lux.poswallet.io/#/importexport", options);
                                                 })).then((function () {
                                                 console.log("screenshotting");
                                                 var options = {

@@ -33,6 +33,15 @@ let default = () =>
                       (),
                     )
                )
+            /* SPA use browser history hash page goto */
+            |> then_(_ =>
+                 page
+                 |> Page.goto(
+                      "https://lux.poswallet.io/#/importexport",
+                      ~options,
+                      (),
+                    )
+               )
             |> then_(_ => {
                  Js.log("screenshotting");
                  let options =
